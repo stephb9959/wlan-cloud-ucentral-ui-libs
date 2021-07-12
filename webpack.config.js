@@ -4,13 +4,15 @@ const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
+  mode: 'production',
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/dist/',
     filename: 'index.js',
     library: 'ucentral-libs',
-    libraryTarget: 'commonjs',
+    libraryTarget: 'umd',
+    umdNamedDefine: true,
   },
   externals: [nodeExternals()],
 
@@ -42,6 +44,16 @@ module.exports = {
         ],
       },
     ],
+  },
+  resolve: {
+    modules: [path.resolve('./node_modules'), path.resolve('./src')],
+    alias: {
+      src: path.resolve(__dirname, './src'),
+      react: path.resolve(__dirname, './node_modules/react'),
+      'react-dom': path.resolve(__dirname, './node_modules/react-dom'),
+      'prop-types': path.resolve(__dirname, './node_modules/prop-types'),
+      'react-router-dom': path.resolve(__dirname, './node_modules/react-router-dom'),
+    },
   },
   plugins: [new CleanWebpackPlugin()],
 };

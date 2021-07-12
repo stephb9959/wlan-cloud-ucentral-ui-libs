@@ -20,4 +20,4 @@ LanguageSwitcher.propTypes = {
   i18n: PropTypes.instanceOf(Object).isRequired,
 };
 
-export default LanguageSwitcher;
+export default React.memo(LanguageSwitcher);

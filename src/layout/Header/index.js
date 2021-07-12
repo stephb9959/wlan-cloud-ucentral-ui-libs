@@ -79,4 +79,4 @@ Header.propTypes = {
   endpoints: PropTypes.instanceOf(Object).isRequired,
 };
 
-export default Header;
+export default React.memo(Header);
